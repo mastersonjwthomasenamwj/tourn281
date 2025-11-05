@@ -1,21 +1,21 @@
-## utak atik
+##utakatik
 
-no_metadata = true
-ae = "/app/flux/ae.safetensors"                                                                                                                                      
-apply_t5_attn_mask = true                                                                                                                                                      
-bucket_no_upscale = true                                                                                                                                                       
-bucket_reso_steps = 64                                                                                                                                                         
-cache_latents = true                                                                                                                                                           
-cache_latents_to_disk = true                                                                                                                                                   
-caption_extension = ".txt"                                                                                                                                                     
-clip_l = "/app/flux/clip_l.safetensors"                                                                                                                              
-discrete_flow_shift = 3.1582                                                                                                                                                   
-dynamo_backend = "no"                                                                                                                                                          
-# epoch = 100                                                                                                                                                                    
-full_bf16 = true                                                                                                                                                               
-gradient_accumulation_steps = 2                                                                                                                                                
-gradient_checkpointing = true                                                                                                                                                  
-guidance_scale = 85.0                                                                                                                                                           
+no_metadata=true
+ae="/app/flux/ae.safetensors"
+apply_t5_attn_mask=true
+bucket_no_upscale=true
+bucket_reso_steps=64
+cache_latents=true
+cache_latents_to_disk=true
+caption_extension=".txt"
+clip_l="/app/flux/clip_l.safetensors"
+discrete_flow_shift=3.1582
+dynamo_backend="no"
+#epoch=100
+full_bf16=true
+gradient_accumulation_steps=2
+gradient_checkpointing=true
+guidance_scale=85.0                                                                                                    
 highvram = true                                                                                                                                                                
 huber_c = 0.1                                                                                                                                                                  
 huber_scale = 1                                                                                                                                                                
