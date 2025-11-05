@@ -15,10 +15,10 @@ output_dir: miner_id_24
 rl: grpo
 
 trl:
-  beta: 0.04
-  max_completion_length: 256
-  use_vllm: False
-  num_generations: 4
+beta: 0.04
+max_completion_length: 256
+use_vllm: False
+num_generations: 4
 
 sequence_len: 1024
 sample_packing: false
