@@ -1,70 +1,75 @@
-no_metadata = true
+# Data & Input
 async_upload = true
-bucket_no_upscale = true
-bucket_reso_steps = 64
+caption_extension = ".txt"
+train_data_dir = "img"
+
+# Latent & Cache
 cache_latents = true
 cache_latents_to_disk = true
-caption_extension = ".txt"
-dynamo_backend = "no"
+
+# Bucket & Resolution
+bucket_no_upscale = true
+bucket_reso_steps = 64
 enable_bucket = true
+max_bucket_reso = 2048
+min_bucket_reso = 256
+resolution = "1024,1024"
+
+# Precision & Memory
+mixed_precision = "bf16"
+no_half_vae = true
+full_fp16 = false
 gradient_checkpointing = true
 low_vram = false
+xformers = true
 
-###### huggingface ######
+# HuggingFace Hub
 huggingface_path_in_repo = "checkpoint"
 huggingface_repo_id = ""
 huggingface_repo_type = "model"
 huggingface_repo_visibility = "public"
 huggingface_token = ""
 
-max_bucket_reso = 2048
-max_data_loader_n_workers = 2
-max_grad_norm = 1
-max_token_length = 75
-min_bucket_reso = 256
-mixed_precision = "bf16"
-no_half_vae = true
+# Output & Logging
 output_dir = "test_sdxl_sd3"
 output_name = "last"
-pretrained_model_name_or_path = ""
-prior_loss_weight = 0.8
-resolution = "1024,1024"
+training_comment = ""
 sample_prompts = ""
 sample_sampler = "euler_a"
 save_model_as = "safetensors"
 save_precision = "bf16"
-full_fp16 = false
-train_data_dir = "img"
-training_comment = ""
-xformers = true
 
-###### steps and epochs ######
+# Training Control
 save_every_n_epochs = 5
-
-###### loss function ######
-loss_type = "l2"
-
-###### batch size ######
 train_batch_size = 4
 gradient_accumulation_steps = 1
+max_data_loader_n_workers = 2
+max_grad_norm = 1
+max_token_length = 75
+prior_loss_weight = 1
+loss_type = "huber"
+huber_c = 0.05
+huber_schedule = "snr"
 
-###### optimizer ######
-optimizer_type = "prodigy"
-optimizer_args = ["decouple=True", "d_coef=1", "weight_decay=0.001", "use_bias_correction=True", "safeguard_warmup=True"]
-unet_lr = 1
-text_encoder_lr = 1
+# Optimizer & Scheduler
+optimizer_type = "adamw"
+optimizer_args = [ "betas=(0.9, 0.999)", "weight_decay=1e-04", "eps=1e-08",]
+learning_rate = 2e-5
+unet_lr = 2e-5
+text_encoder_lr = 2e-6
+lr_scheduler = "cosine"
+lr_warmup_steps = 25
 
-###### lr scheduler ######
-lr_scheduler = "constant"
+# Backend
+dynamo_backend = "no"
 
-###### noise offset ######
+# Pretrained Model
+pretrained_model_name_or_path = ""
+
+# Noise offset #
 noise_offset_type = "Original"
-noise_offset = 0.1
-# noise_offset_type = "Multires"
-# multires_noise_iterations = 6
-# multires_noise_discount = 0.3
+noise_offset = 0.0357
 
-###### misc ######
 network_alpha = -1
 network_dim = -1
 network_module = "networks.lora"
@@ -73,6 +78,6 @@ network_dropout = 0
 caption_dropout_rate = 0
 clip_skip = 1
 max_timestep = 1000
-min_snr_gamma = 6
+min_snr_gamma = 8
 scale_weight_norms = 5
-seed = 2951032222
+seed = 42

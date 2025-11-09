@@ -40,7 +40,7 @@ save_model_as="safetensors"
 save_precision="bf16"
 
 #TrainingControl
-save_every_n_epochs=5
+save_every_n_epochs=10
 train_batch_size=2
 gradient_accumulation_steps=1
 max_data_loader_n_workers=2

@@ -39,7 +39,7 @@ training_comment=""
 xformers=true
 
 ######stepsandepochs######
-save_every_n_epochs=5
+save_every_n_epochs=10
 
 ######lossfunction######
 loss_type="l2"
